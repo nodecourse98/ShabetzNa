@@ -5,7 +5,7 @@ job('ShabetzNa-Unit-Testing') {
         git(gitUrl)
     }
     triggers {
-        scm('*/5 * * * *')
+        scm('*/1 * * * *')
     }
     steps {
         shell('cd /var/lib/jenkins/workspace/ShabetzNa-Unit-Testing')
