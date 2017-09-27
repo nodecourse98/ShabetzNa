@@ -19,4 +19,3 @@ mongoose.connect('mongodb://' + config.dbHost + '/' + config.dbName, {useMongoCl
 server.listen(config.port, function() {
     console.log(`Server running on port ${config.port}`)
 });
-//
