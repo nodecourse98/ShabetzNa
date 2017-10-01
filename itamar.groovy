@@ -18,25 +18,25 @@ job(JobName) {
     }
 }
 
-listView(ProjectName) {
-    filterBuildQueue()
-    filterExecutors()
-    jobs {
-        name(JobName)
+//listView(ProjectName) {
+//    filterBuildQueue()
+//    filterExecutors()
+//    jobs {
+//        name(JobName)
         // regex(/'unit-testing-$project'/)
-    }
-    jobFilters {
-        status {
-            status(Status.UNSTABLE)
-        }
-    }
-    columns {
-        status()
-        weather()
-        name()
-        lastSuccess()
-        lastFailure()
-        lastDuration()
-        buildButton()
-    }
-}
+//    }
+//    jobFilters {
+//        status {
+//            status(Status.UNSTABLE)
+//        }
+//    }
+//    columns {
+//        status()
+//        weather()
+//        name()
+//        lastSuccess()
+//        lastFailure()
+//       lastDuration()
+//        buildButton()
+//    }
+//}
