@@ -23,7 +23,7 @@ listView(ProjectName) {
     filterBuildQueue()
     filterExecutors()
     jobs {
-        name('unit-testing-$JobName')
+        name('$JobName')
 //        regex(/project-A-.+/)
     }
     jobFilters {
