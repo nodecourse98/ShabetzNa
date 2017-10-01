@@ -13,7 +13,6 @@ job(job) {
         scm('*/5 * * * *')
     }
     steps {
-        shell('cd /var/lib/jenkins/workspace/'job)
         shell('npm install')
         shell('npm test')
     }
