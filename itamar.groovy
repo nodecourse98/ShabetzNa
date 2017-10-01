@@ -1,9 +1,11 @@
+import groovy.json.JsonSlurpe
+
 // Enter your git repo url
-def gitUrl = "https://github.com/nodecourse98/ShabetzNa-Server"
+String gitUrl = "https://github.com/nodecourse98/ShabetzNa-Server"
 // Enter the name of your project
-def project = "ShabetzNa-Server"
+String project = "ShabetzNa-Server"
 // Enter a name for your job. Should look like = unit-testing-projectname
-def job = "unit-testing-ShabetzNa-Server"
+String job = "unit-testing-ShabetzNa-Server"
 
 job(job) {
     scm {
