@@ -1,9 +1,9 @@
 // Enter your git repo url
-string gitUrl = 'https://github.com/nodecourse98/ShabetzNa-Server'
+def gitUrl = "https://github.com/nodecourse98/ShabetzNa-Server"
 // Enter the name of your project
-string project = 'ShabetzNa-Server'
+def project = "ShabetzNa-Server"
 // Enter a name for your job. Should look like = unit-testing-projectname
-string job = 'unit-testing-ShabetzNa-Server'
+def job = "unit-testing-ShabetzNa-Server"
 
 job(job) {
     scm {
@@ -23,7 +23,7 @@ listView(project) {
     filterExecutors()
     jobs {
         name(job)
-        // regex(/'unit-testing-'project/)
+        // regex(/'unit-testing-$project'/)
     }
     jobFilters {
         status {
