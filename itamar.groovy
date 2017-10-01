@@ -1,5 +1,3 @@
-import groovy.json.JsonSlurpe
-
 // Enter your git repo url
 String gitUrl = "https://github.com/nodecourse98/ShabetzNa-Server"
 // Enter the name of your project
