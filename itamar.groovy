@@ -1,4 +1,4 @@
-// Enter your git repo Urldd.
+// Enter your git repo Url
 def gitUrl = "https://github.com/nodecourse98/ShabetzNa-Server"
 // Enter the name of your project
 def ProjectName = "ShabetzNa-Server"
