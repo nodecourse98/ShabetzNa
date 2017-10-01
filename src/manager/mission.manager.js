@@ -2,10 +2,10 @@ var objectId = require('mongoose').Types.ObjectId;
 var Mission = require('../models/mission.model');
 var MissionValidation = require('./validations/mission.validator');
 
-function create(type, startDate, endDate, status, participents){
-    try{
-        if(MissionValidation.dateRangeValidity(startDate, endDate)){
-            
+function create(type, startDate, endDate, status, participents) {
+    try {
+        if (MissionValidation.dateRangeValidity(startDate, endDate)) {
+
             MissionValidation.typeValidity(type);
             MissionValidation.dateValidity(startDate);
             MissionValidation.dateValidity(endDate);
@@ -19,84 +19,100 @@ function create(type, startDate, endDate, status, participents){
                 status: status,
                 participents: participents
             });
-    
+
             return newMission.save();
-        }
-        else{
+        } else {
             return Promise.resolve(null);
         }
-    }
-    catch(ex){
+    } catch (ex) {
         return Promise.reject(ex);
     }
 }
 
-function getAll(){
+function getAll() {
     return Mission.find({});
 }
 
 async function getByDateRange(fromDate, toDate) {
-    try{
+    try {
         MissionValidation.dateValidity(fromDate);
         MissionValidation.dateValidity(toDate);
 
         //If the input is valid => Search
-        if(MissionValidation.dateRangeValidity(fromDate, toDate)) {
-            return Mission.find({startDate: {'$gte': fromDate, '$lte': toDate}});
+        if (MissionValidation.dateRangeValidity(fromDate, toDate)) {
+            return Mission.find({
+                startDate: {
+                    '$gte': fromDate,
+                    '$lte': toDate
+                }
+            });
         }
         return Promise.resolve(null);
-    }
-    catch(ex) {
+    } catch (ex) {
         return Promise.reject(ex);
     }
 }
 
 function getFromDate(fromDate) {
-    try{
+    try {
         //If the input is valid => Search
         MissionValidation.dateValidity(fromDate)
-        return Mission.find({startDate: {'$gte': fromDate}});        
-    }
-    catch(ex) {
-        return Promise.reject(ex);        
+        return Mission.find({
+            startDate: {
+                '$gte': fromDate
+            }
+        });
+    } catch (ex) {
+        return Promise.reject(ex);
     }
 }
 
 function getByUser(user) {
     return Mission.find({
-        participents: {'$in': [user]}
+        participents: {
+            '$in': [user]
+        }
     });
 }
 
 function getByUserDateRange(user, fromDate, toDate) {
     return Mission.find({
-        participents: { '$in': [user] },
-        startDate: { '$gte': fromDate, '$lte': toDate }
+        participents: {
+            '$in': [user]
+        },
+        startDate: {
+            '$gte': fromDate,
+            '$lte': toDate
+        }
     });
 }
 
 function getByUserFromDate(user, fromDate) {
-    try{
+    try {
         //If the input is valid => Search
         MissionValidation.dateValidity(fromDate)
         return Mission.find({
-            participents: { '$in': [user] },
-            startDate: {'$gte': fromDate}
-        });    }
-    catch(ex) {
-        return Promise.reject(ex);        
+            participents: {
+                '$in': [user]
+            },
+            startDate: {
+                '$gte': fromDate
+            }
+        });
+    } catch (ex) {
+        return Promise.reject(ex);
     }
 }
 
 async function updateDates(id, startDate, endDate) {
-    try{
+    try {
         MissionValidation.dateValidity(startDate);
         MissionValidation.dateValidity(endDate);
-    
-        if(MissionValidation.dateRangeValidity(startDate, endDate)){
+
+        if (MissionValidation.dateRangeValidity(startDate, endDate)) {
             // Find the wanted mission.
             var mission = await Mission.findById(id);
-            if(mission){
+            if (mission) {
                 // If something has changed update it, else put the previous data.
                 mission.startDate = startDate ? new Date(startDate) : new Date(mission.startDate);
                 mission.endDate = endDate ? new Date(endDate) : new Date(mission.endDate);
@@ -106,22 +122,20 @@ async function updateDates(id, startDate, endDate) {
             }
         }
         return Promise.resolve(null);
-    }
-    catch(ex){
-        return Promise.reject(ex);        
+    } catch (ex) {
+        return Promise.reject(ex);
     }
 }
 
-async function changeStatus(id, status){
+async function changeStatus(id, status) {
     var mission = await Mission.findById(id);
 
     if (mission) {
-        try{
+        try {
             MissionValidation.statusValidity(status);
             mission.status = status;
             return mission.save();
-        }
-        catch(ex){
+        } catch (ex) {
             return Promise.reject(ex);
         }
     }
@@ -130,14 +144,13 @@ async function changeStatus(id, status){
 
 async function addParticipent(id, participent) {
     var mission = await Mission.findById(id);
-    
+
     if (mission) {
         try {
             MissionValidation.typeValidity(participent);
             mission.participents.push(participent);
             return mission.save();
-        }
-        catch(ex){
+        } catch (ex) {
             return Promise.reject(ex);
         }
     }
@@ -146,14 +159,14 @@ async function addParticipent(id, participent) {
 
 function Delete(id) {
     try {
-        if(objectId.isValid(id)) {
-            return Mission.remove({_id:id});
-        }
-        else {
+        if (objectId.isValid(id)) {
+            return Mission.remove({
+                _id: id
+            });
+        } else {
             throw TypeError("ID is not valid");
         }
-    } 
-    catch(ex) {
+    } catch (ex) {
         return Promise.reject(ex);
     }
 }

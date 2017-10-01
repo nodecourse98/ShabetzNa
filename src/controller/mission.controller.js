@@ -9,7 +9,7 @@ async function CreateMission(type, startDate, endDate, status, participents) {
             participentsId.push((await userController.getUserByUsername(participent))._id);
         }, this);
 
-        return missionManager.create(type, startDate, endDate, status, sendParticipents);
+        return missionManager.create(type, startDate, endDate, status, participentsId);
     } catch (ex) {
         throw ex;
     }
