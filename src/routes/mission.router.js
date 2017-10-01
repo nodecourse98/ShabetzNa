@@ -39,8 +39,8 @@ router.post('/range', async function (req, res) {
 
 router.get('/from/:from', async function (req, res) {
     try {
-        var resp = await missionController.getMissionByDateRange(
-            req.param.from
+        var resp = await missionController.getMissionByFromDate(
+            req.params.from
         );
         res.json(resp);
     } catch (ex) {

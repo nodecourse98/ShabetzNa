@@ -56,10 +56,13 @@ async function getByDateRange(fromDate, toDate) {
 function getFromDate(fromDate) {
     try {
         //If the input is valid => Search
-        MissionValidation.dateValidity(fromDate)
+        MissionValidation.dateValidity(fromDate);
         return Mission.find({
             startDate: {
                 '$gte': fromDate
+            },
+            endDate: {
+                '$lte': fromDate
             }
         });
     } catch (ex) {
