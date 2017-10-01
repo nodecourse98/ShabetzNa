@@ -1,11 +1,11 @@
 // Enter your git repo url
 def gitUrl = "https://github.com/nodecourse98/ShabetzNa-Server"
 // Enter the name of your project
-def project = "ShabetzNa-Server"
+def ProjectName = "ShabetzNa-Server"
 // Enter a name for your job. Should look like = unit-testing-projectname
-def job = "unit-testing-ShabetzNa-Server"
+def JobName = "unit-testing-ShabetzNa-Server"
 
-job(job) {
+job(JobName) {
     scm {
         git(gitUrl)
     }
@@ -18,12 +18,13 @@ job(job) {
     }
 }
 
-listView(project) {
+listView(ProjectName) {
+    description('Jobs')
     filterBuildQueue()
     filterExecutors()
     jobs {
-        name(job)
-        // regex(/'unit-testing-'project/)
+        name(JobName)
+//        regex(//)
     }
     jobFilters {
         status {
