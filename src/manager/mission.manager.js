@@ -60,9 +60,6 @@ function getFromDate(fromDate) {
         return Mission.find({
             startDate: {
                 '$gte': fromDate
-            },
-            endDate: {
-                '$gte': fromDate
             }
         });
     } catch (ex) {

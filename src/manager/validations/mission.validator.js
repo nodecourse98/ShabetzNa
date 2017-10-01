@@ -9,7 +9,7 @@ function typeValidity(type) {
 }
 
 function dateRangeValidity(startDate, endDate) {
-    return (startDate <= endDate);
+    return (new Date(startDate) <= new Date(endDate));
 }
 
 function dateValidity(date) {
