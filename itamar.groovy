@@ -1,11 +1,11 @@
 // Enter your git repo url
 String gitUrl = "https://github.com/nodecourse98/ShabetzNa-Server"
 // Enter the name of your project
-String project = "ShabetzNa-Server"
+String ProjectNmae = "ShabetzNa-Server"
 // Enter a name for your job. Should look like = unit-testing-projectname
-String job = "unit-testing-ShabetzNa-Server"
+String JobName = "unit-testing-ShabetzNa-Server"
 
-job(job) {
+job(JobName) {
     scm {
         git(gitUrl)
     }
@@ -18,11 +18,11 @@ job(job) {
     }
 }
 
-listView(project) {
+listView(ProjectName) {
     filterBuildQueue()
     filterExecutors()
     jobs {
-        name(job)
+        name(JobName)
         // regex(/'unit-testing-$project'/)
     }
     jobFilters {
