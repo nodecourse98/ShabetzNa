@@ -39,3 +39,4 @@ listView(project) {
         lastDuration()
         buildButton()
     }
+}
