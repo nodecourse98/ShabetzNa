@@ -40,7 +40,7 @@ async function getByDateRange(fromDate, toDate) {
 
         //If the input is valid => Search
         if (MissionValidation.dateRangeValidity(fromDate, toDate)) {
-            return Mission.find({
+            return await Mission.find({
                 '$or': [
                     {
                         'startDate': {
