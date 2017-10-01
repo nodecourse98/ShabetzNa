@@ -41,10 +41,20 @@ async function getByDateRange(fromDate, toDate) {
         //If the input is valid => Search
         if (MissionValidation.dateRangeValidity(fromDate, toDate)) {
             return Mission.find({
-                startDate: {
-                    '$gte': fromDate,
-                    '$lte': toDate
-                }
+                '$or': [
+                    {
+                        'startDate': {
+                            '$gte': fromDate,
+                            '$lte': toDate
+                        }
+                    },
+                    {
+                        'endDate': {
+                            '$gte': fromDate,
+                            '$lte': toDate
+                        }
+                    }
+                ]
             });
         }
         return Promise.resolve(null);
@@ -80,10 +90,20 @@ function getByUserDateRange(user, fromDate, toDate) {
         participents: {
             '$in': [user]
         },
-        startDate: {
-            '$gte': fromDate,
-            '$lte': toDate
-        }
+        '$or': [
+            {
+                'startDate': {
+                    '$gte': fromDate,
+                    '$lte': toDate
+                }
+            },
+            {
+                'endDate': {
+                    '$gte': fromDate,
+                    '$lte': toDate
+                }
+            }
+        ]
     });
 }
 
