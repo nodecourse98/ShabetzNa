@@ -11,7 +11,7 @@ async function create(type, startDate, endDate, status, participents) {
             MissionValidation.dateValidity(endDate);
             MissionValidation.statusValidity(status);
             MissionValidation.participentsValidity(participents);
-
+ 
             var newMission = new Mission({
                 type: type,
                 startDate: startDate,
