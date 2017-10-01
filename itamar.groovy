@@ -1,7 +1,7 @@
 // Enter your git repo url
 def gitUrl = "https://github.com/nodecourse98/ShabetzNa-Server"
 // Enter the name of your project
-def ProjectNmae = "ShabetzNa-Server"
+def ProjectName = "ShabetzNa-Server"
 // Enter a name for your job. Should look like = unit-testing-projectname
 def JobName = "unit-testing-ShabetzNa-Server"
 
@@ -18,12 +18,12 @@ job(JobName) {
     }
 }
 
-listView('test1') {
+listView(ProjectName) {
     description('Jobs')
     filterBuildQueue()
     filterExecutors()
     jobs {
-        name('unit-testing-test')
+        name('unit-testing-$JobName')
 //        regex(/project-A-.+/)
     }
     jobFilters {
