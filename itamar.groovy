@@ -18,7 +18,7 @@ job(JobName) {
     }
 }
 
-listView(ProjectName) {
+listView('test1') {
     description('Jobs')
     filterBuildQueue()
     filterExecutors()
