@@ -62,7 +62,7 @@ function getFromDate(fromDate) {
                 '$gte': fromDate
             },
             endDate: {
-                '$lte': fromDate
+                '$gte': fromDate
             }
         });
     } catch (ex) {
