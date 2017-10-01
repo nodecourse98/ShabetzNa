@@ -1,9 +1,9 @@
 // Enter your git repo url
-String gitUrl = "https://github.com/nodecourse98/ShabetzNa-Server"
+def gitUrl = "https://github.com/nodecourse98/ShabetzNa-Server"
 // Enter the name of your project
-String ProjectNmae = "ShabetzNa-Server"
+def ProjectNmae = "ShabetzNa-Server"
 // Enter a name for your job. Should look like = unit-testing-projectname
-String JobName = "unit-testing-ShabetzNa-Server"
+def JobName = "unit-testing-ShabetzNa-Server"
 
 job(JobName) {
     scm {
