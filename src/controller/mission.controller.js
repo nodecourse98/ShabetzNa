@@ -1,15 +1,17 @@
 var missionManager = require('../manager/mission.manager');
 var userController = require('./user.controller');
+var objId = require('mongoose').ObjectId;
 
 async function CreateMission(type, startDate, endDate, status, participents) {
     try {
         var participentsId = [];
+        for (participent of participents) {
+            var user = await userController.getUserByUsername(participent);
+            await participentsId.push(user.id);
+        }
 
-        participents.forEach(async function (participent) {
-            participentsId.push((await userController.getUserByUsername(participent))._id);
-        }, this);
+        return await missionManager.create(type, startDate, endDate, status, participentsId);
 
-        return missionManager.create(type, startDate, endDate, status, participentsId);
     } catch (ex) {
         throw ex;
     }

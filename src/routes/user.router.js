@@ -28,7 +28,7 @@ router.post('/', async function (req, res) {
             req.body.email,
             req.body.job,
             req.body.userspermissions,
-            req.body.specialpermissions,
+            req.body.specialPermissions,
             req.body.exemptions
         );
         res.json(resp);

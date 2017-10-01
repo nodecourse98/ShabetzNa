@@ -6,6 +6,7 @@ function create(username, name, email, job, usersPermissions, specialPermissions
     if (username && name){
         try{
             // Exceptions?
+            console.log(specialPermissions);            
             UserValidation.usersPermissionsValidity(usersPermissions);
             UserValidation.specialPermissionsValidity(specialPermissions);
             UserValidation.exemptionsValidity(exemptions);

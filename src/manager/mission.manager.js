@@ -2,7 +2,7 @@ var objectId = require('mongoose').Types.ObjectId;
 var Mission = require('../models/mission.model');
 var MissionValidation = require('./validations/mission.validator');
 
-function create(type, startDate, endDate, status, participents) {
+async function create(type, startDate, endDate, status, participents) {
     try {
         if (MissionValidation.dateRangeValidity(startDate, endDate)) {
 
@@ -20,7 +20,7 @@ function create(type, startDate, endDate, status, participents) {
                 participents: participents
             });
 
-            return newMission.save();
+            return await newMission.save();
         } else {
             return Promise.resolve(null);
         }
