@@ -1,7 +1,7 @@
-var router          = require('express').Router();
-var missionController  = require('../controller/mission.controller');
+var router = require('express').Router();
+var missionController = require('../controller/mission.controller');
 
-router.get('/',async function(req,res) {
+router.get('/', async function (req, res) {
     try {
         var resp = await missionController.getAllMissions();
         res.json(resp);
@@ -10,10 +10,10 @@ router.get('/',async function(req,res) {
     }
 });
 
-router.post('/',async function(req,res) {
+router.post('/', async function (req, res) {
     try {
         var resp = await missionController.CreateMission(
-            req.body.type, 
+            req.body.type,
             req.body.startDate,
             req.body.endDate,
             req.body.status,
@@ -25,7 +25,7 @@ router.post('/',async function(req,res) {
     }
 });
 
-router.post('/range', async function(req,res) {
+router.post('/range', async function (req, res) {
     try {
         var resp = await missionController.getMissionByDateRange(
             req.body.from,
@@ -37,7 +37,7 @@ router.post('/range', async function(req,res) {
     }
 });
 
-router.get('/from/:from', async function(req,res) {
+router.get('/from/:from', async function (req, res) {
     try {
         var resp = await missionController.getMissionByDateRange(
             req.param.from
@@ -48,7 +48,7 @@ router.get('/from/:from', async function(req,res) {
     }
 });
 
-router.get('/user/:user', async function(req,res) {
+router.get('/user/:user', async function (req, res) {
     try {
         var resp = await missionController.getUserMissions(
             req.param.user
@@ -59,7 +59,7 @@ router.get('/user/:user', async function(req,res) {
     }
 });
 
-router.post('/user/range', async function(req,res) {
+router.post('/user/range', async function (req, res) {
     try {
         var resp = await await missionController.getUserMissionsByDateRange(
             req.body.user,
@@ -72,7 +72,7 @@ router.post('/user/range', async function(req,res) {
     }
 });
 
-router.post('/user/from', async function(req,res) {
+router.post('/user/from', async function (req, res) {
     try {
         var resp = await missionController.getUserMissionsFromDate(
             req.body.user,
@@ -84,7 +84,7 @@ router.post('/user/from', async function(req,res) {
     }
 });
 
-router.put('/dates', async function(req,res) {
+router.put('/dates', async function (req, res) {
     try {
         var resp = await missionController.ChangeMissionDates(
             req.body.user,
@@ -97,7 +97,7 @@ router.put('/dates', async function(req,res) {
     }
 });
 
-router.put('/status', async function(req,res) {
+router.put('/status', async function (req, res) {
     try {
         var resp = await missionController.ChangeMissionStatus(
             req.body.user,
@@ -109,7 +109,7 @@ router.put('/status', async function(req,res) {
     }
 });
 
-router.put('/participent', async function(req,res) {
+router.put('/participent', async function (req, res) {
     try {
         var resp = await missionController.AddParticipentToMission(
             req.body.id,
@@ -121,7 +121,7 @@ router.put('/participent', async function(req,res) {
     }
 });
 
-router.delete('/', async function(req,res) {
+router.delete('/', async function (req, res) {
     try {
         var resp = await missionController.DeleteMission(
             req.body.mission
