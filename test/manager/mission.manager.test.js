@@ -232,12 +232,13 @@ describe('Mission Manager', () => {
             await missionManager.create(
                 globalMission.type,
                 new Date(2016, 1, 1),
-                globalMission.endDate,
+                new Date(2016, 1, 2),
                 globalMission.status,
                 globalMission.participents
             );
 
             let missions = await missionManager.getByUserDateRange(globalMission.participents[0], globalMission.startDate, globalMission.endDate);
+            console.log(missions)
             except(missions.length).to.equal(1);
             except(missions[0].participents).is.deep.contains(globalMission.participents[0]);
             except(missions[0].startDate).is.gte(globalMission.startDate);                    
