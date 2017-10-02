@@ -1,7 +1,6 @@
 var router = require('express').Router();
 var userController = require('../controller/user.controller');
 
-
 router.get('/', async function (req, res) {
     try {
         var resp = await userController.getAllUsers();
